@@ -1,0 +1,30 @@
+/* src/Sidebar.css */
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    background-color: #2d2d4f;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 50px; /* adjust if your navbar height is different */
+    left: 0;
+}
+
+.sidebar h3 {
+    margin-top: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.sidebar li:hover {
+    color: #aaa;
+}

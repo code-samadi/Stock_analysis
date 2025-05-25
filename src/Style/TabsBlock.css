@@ -1,0 +1,15 @@
+.tabs-block {
+    background: white;
+    border: 2px solid black;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tabs-title {
+    margin-bottom: 0.5rem;
+}
+
+.tabs-content {
+    display: flex;
+    gap: 1rem;
+}
