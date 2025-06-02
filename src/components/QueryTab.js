@@ -1,0 +1,24 @@
+// QueryTab.js
+import React from 'react';
+import { Box, Typography, Chip } from '@mui/material';
+
+const QueryTab = ({ selectedItems }) => {
+    const selectedKeys = Object.keys(selectedItems).filter(key => selectedItems[key]);
+
+    return (
+        <Box>
+            <Typography variant="h6">Selected Columns:</Typography>
+            <Box sx={{ mt: 1, display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                {selectedKeys.length > 0 ? (
+                    selectedKeys.map((item, index) => (
+                        <Chip key={index} label={item} />
+                    ))
+                ) : (
+                    <Typography variant="body2" color="text.secondary">No columns selected.</Typography>
+                )}
+            </Box>
+        </Box>
+    );
+};
+
+export default QueryTab;

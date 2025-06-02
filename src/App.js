@@ -1,22 +1,19 @@
 import './Style/App.css';
 import Navbar from "./components/Navbar";
 import SideBar from "./components/Sidebar";
-import TabsBlock from "./components/tabs";
-
-const tabs = [
-    "Query",
-    "Columns",
-    "Filters"
-]
+import MainTabs from "./components/tabs";
+import React, { useState } from 'react';
 
 function App() {
-  return (
-      <div className="App">
-          <Navbar/>
-          <SideBar/>
+    const [selectedItems, setSelectedItems] = useState({});
+    return (
+        <div className="App">
+            <Navbar />
+            <SideBar selectedItems={selectedItems} setSelectedItems={setSelectedItems}/>
+            <MainTabs selectedItems={selectedItems} setSelectedItems={setSelectedItems} />
 
-      </div>
-  );
+        </div>
+    );
 }
 
 export default App;
