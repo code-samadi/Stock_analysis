@@ -1,6 +1,7 @@
 // QueryTab.js
 import React from 'react';
 import { Box, Typography, Chip } from '@mui/material';
+import QueryBuilder from '../components/QueryBuilder';
 
 const QueryTab = ({ selectedItems }) => {
     const selectedKeys = Object.keys(selectedItems).filter(key => selectedItems[key]);
@@ -16,6 +17,7 @@ const QueryTab = ({ selectedItems }) => {
                 ) : (
                     <Typography variant="body2" color="text.secondary">No columns selected.</Typography>
                 )}
+                <QueryBuilder selectedColumns={selectedKeys}/>
             </Box>
         </Box>
     );
