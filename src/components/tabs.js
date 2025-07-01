@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import QueryBuilder from '../components/QueryTab'
+import QueryTab from '../components/QueryTab'
 import { Box, Tabs, Tab, Typography } from '@mui/material';
 
 function TabPanel({ children, value, index }) {
@@ -41,7 +41,7 @@ const MainTabs = ({selectedItems,setSelectedItems}) => {
             {/* Tabs Content */}
             <Box sx={{ flexGrow: 1, overflowY: 'auto' }}>
                 <TabPanel value={value} index={0}>
-                    <QueryBuilder selectedItems={selectedItems}/>
+                    <QueryTab selectedItems={selectedItems}/>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                     <Typography variant="h6">Result Section</Typography>

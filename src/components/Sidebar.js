@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Box, Checkbox, Typography } from '@mui/material';
 import { SimpleTreeView, TreeItem } from '@mui/x-tree-view';
 import '../Style/Sidebar.css';

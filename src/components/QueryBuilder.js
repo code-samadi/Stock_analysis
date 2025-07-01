@@ -1,14 +1,15 @@
+// noinspection JSValidateTypes
+
 import React, { useState } from 'react';
 import { Box, Select, MenuItem, TextField, Button } from '@mui/material';
 
 const QueryBuilder = ({ selectedColumns }) => {
     const [conditions, setConditions] = useState([
-        { field: '', operator: '', value: '' }
+        { logic:'', field: '', operator: '', value: '' }
     ]);
-    const [logic, setLogic] = useState('AND');
 
     const addCondition = () => {
-        setConditions([...conditions, { field: '', operator: '', value: '' }]);
+        setConditions([...conditions, {logic:'', field: '', operator: '', value: '' }]);
     };
 
     const removeCondition = (index) => {
@@ -22,25 +23,30 @@ const QueryBuilder = ({ selectedColumns }) => {
         setConditions(newConditions);
     };
 
+    // noinspection JSValidateTypes
     return (
         <Box mt={2}>
-            <Select
-                value={logic}
-                onChange={(e) => setLogic(e.target.value)}
-                size="small"
-                sx={{ mb: 2 }}
-            >
-                <MenuItem value="AND">AND</MenuItem>
-                <MenuItem value="OR">OR</MenuItem>
-            </Select>
-
             {conditions.map((cond, index) => (
                 <Box key={index} display="flex" gap={1} alignItems="center" mb={1}>
-                    {/* 👇 Dropdown with selected columns */}
+                    {/* Logic selector, hidden for the first row */}
+                    {index !== 0 && (
+                        <Select
+                            value={cond.logic}
+                            onChange={(e) => updateCondition(index, 'logic', e.target.value)}
+                            size="small"
+                            variant="outlined"
+                            sx={{ minWidth: 80 }}
+                        >
+                            <MenuItem value="AND">AND</MenuItem>
+                            <MenuItem value="OR">OR</MenuItem>
+                        </Select>
+                    )}
+
                     <Select
                         value={cond.field}
                         onChange={(e) => updateCondition(index, 'field', e.target.value)}
                         size="small"
+                        variant="outlined"
                         sx={{ minWidth: 120 }}
                     >
                         {selectedColumns.length > 0 ? (
@@ -58,11 +64,14 @@ const QueryBuilder = ({ selectedColumns }) => {
                         value={cond.operator}
                         onChange={(e) => updateCondition(index, 'operator', e.target.value)}
                         size="small"
+                        variant="outlined"
                         sx={{ minWidth: 100 }}
                     >
                         <MenuItem value="=">=</MenuItem>
                         <MenuItem value=">">&gt;</MenuItem>
                         <MenuItem value="<">&lt;</MenuItem>
+                        <MenuItem value=">=">{">="}</MenuItem>
+                        <MenuItem value="<=">{"<="}</MenuItem>
                         <MenuItem value="contains">contains</MenuItem>
                     </Select>
 
